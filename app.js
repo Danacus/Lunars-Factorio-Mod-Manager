@@ -92,8 +92,6 @@ appMessager.on('newProfile', function (event) {
 appMessager.on('activateProfile', function (event, index) {
   try {
     profileManager.activateProfile(index)
-    event.sender.send('dataAllProfiles', profileManager.getAllProfiles())
-    event.sender.send('dataActiveProfile', profileManager.getActiveProfile())
   } catch (error) {
     logger.log(4, `Error when activating a profile: ${error}`)
     app.exit(-1)
@@ -176,8 +174,13 @@ appMessager.on('requestDownload', function(event, modID, modName) {
   }
 })
 
+<<<<<<< HEAD
 appMessager.on('deleteMod', function(event, index) {
   modManager.deleteMod(index, function() {
+=======
+appMessager.on('deleteMod', function (event, index) {
+  modManager.deleteMod(index, function () {
+>>>>>>> 2cd5f301a5cacbff540b10894286fb931cd89d1c
     event.sender.send('dataInstalledMods', modManager.getInstalledMods())
     profileManager.removeDeletedMods(modManager.getInstalledModNames())
   })
