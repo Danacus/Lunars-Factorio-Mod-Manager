@@ -224,7 +224,7 @@ function listActiveProfile () {
 
     tableBody.append(
             $('<tr />')
-                .addClass(() => { if (mod.enabled === 'false') return 'danger' })
+                .addClass(() => { if (!mod.enabled) return 'danger' })
                 .append(
                     $('<td />')
                         .addClass('small-cell')
@@ -232,7 +232,7 @@ function listActiveProfile () {
                             $('<input type="checkbox" />')
                                 .addClass('checkbox')
                                 .data('index', i)
-                                .prop('checked', mod.enabled === 'true')
+                                .prop('checked', mod.enabled)
                         )
                 )
                 .append(
